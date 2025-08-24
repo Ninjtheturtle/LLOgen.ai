@@ -65,14 +65,14 @@ export default function History() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background p-6">
+      <div className="min-h-screen p-6">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <div>
               <h1 className="text-3xl font-bold">Run History</h1>
-              <p className="text-muted-foreground">View and manage your llms.txt generations</p>
+              <p className="text-muted-foreground">View and manage your robots.txt generations</p>
             </div>
-            <Button onClick={() => navigate("/")} variant="outline">
+            <Button onClick={() => navigate("/")} variant="outline" className="hover:bg-white hover:text-black hover:border-white">
               New Generation
             </Button>
           </div>
@@ -83,14 +83,14 @@ export default function History() {
   }
 
   return (
-    <div className="min-h-screen bg-background p-6">
+    <div className="min-h-screen p-6">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold">Run History</h1>
-            <p className="text-muted-foreground">View and manage your llms.txt generations</p>
+            <p className="text-muted-foreground">View and manage your robots.txt generations</p>
           </div>
-          <Button onClick={() => navigate("/")} variant="outline">
+          <Button onClick={() => navigate("/")} variant="outline" className="hover:bg-white hover:text-black hover:border-white">
             New Generation
           </Button>
         </div>
@@ -102,49 +102,51 @@ export default function History() {
           <CardContent>
             {runs.length === 0 ? (
               <div className="text-center py-8">
-                <p className="text-muted-foreground">No generations yet. Start by creating your first llms.txt file!</p>
-                <Button onClick={() => navigate("/")} className="mt-4">
+                <p className="text-muted-foreground">No generations yet. Start by creating your first robots.txt file!</p>
+                <Button onClick={() => navigate("/")} className="mt-4 hover:bg-white hover:text-black hover:border-white">
                   Generate Now
                 </Button>
               </div>
             ) : (
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Site</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Created</TableHead>
-                    <TableHead>Completed</TableHead>
-                    <TableHead>Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {runs.map((run) => (
-                    <TableRow key={run.id}>
-                      <TableCell className="font-medium">{run.site_url}</TableCell>
-                      <TableCell>{getStatusBadge(run.status)}</TableCell>
-                      <TableCell>{formatDate(run.created_at)}</TableCell>
-                      <TableCell>
-                        {run.finished_at ? formatDate(run.finished_at) : "-"}
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex gap-2">
-                          {run.status === "completed" && (
-                            <Button size="sm" variant="outline">
-                              <Eye className="w-4 h-4 mr-2" />
-                              View
-                            </Button>
-                          )}
-                          <Button size="sm" variant="outline">
-                            <RotateCcw className="w-4 h-4 mr-2" />
-                            Regenerate
-                          </Button>
-                        </div>
-                      </TableCell>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="min-w-[200px]">Site</TableHead>
+                      <TableHead className="min-w-[100px]">Status</TableHead>
+                      <TableHead className="min-w-[120px]">Created</TableHead>
+                      <TableHead className="min-w-[120px]">Completed</TableHead>
+                      <TableHead className="min-w-[160px]">Actions</TableHead>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {runs.map((run) => (
+                      <TableRow key={run.id}>
+                        <TableCell className="font-medium min-w-[200px]">{run.site_url}</TableCell>
+                        <TableCell className="min-w-[100px]">{getStatusBadge(run.status)}</TableCell>
+                        <TableCell className="min-w-[120px]">{formatDate(run.created_at)}</TableCell>
+                        <TableCell className="min-w-[120px]">
+                          {run.finished_at ? formatDate(run.finished_at) : "-"}
+                        </TableCell>
+                        <TableCell className="min-w-[160px]">
+                          <div className="flex gap-2">
+                            {run.status === "completed" && (
+                              <Button size="sm" variant="outline">
+                                <Eye className="w-4 h-4 mr-2" />
+                                View
+                              </Button>
+                            )}
+                            <Button size="sm" variant="outline">
+                              <RotateCcw className="w-4 h-4 mr-2" />
+                              Regenerate
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             )}
           </CardContent>
         </Card>

@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Check, Loader2 } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface GenerationStepperProps {
   currentStep: number;
@@ -10,15 +11,16 @@ const steps = [
   { id: 0, name: "Discover", description: "Finding pages" },
   { id: 1, name: "Extract", description: "Parsing content" },
   { id: 2, name: "Summarize", description: "Processing data" },
-  { id: 3, name: "Compose", description: "Generating llms.txt" },
+  { id: 3, name: "Compose", description: "Generating robots.txt" },
   { id: 4, name: "Validate", description: "Checking format" },
   { id: 5, name: "Done", description: "Complete" },
 ];
 
 export function GenerationStepper({ currentStep, className }: GenerationStepperProps) {
   return (
-    <div className={cn("w-full", className)}>
-      <div className="flex items-center justify-between">
+    <Card className={cn("w-full", className)}>
+      <CardContent className="p-6">
+        <div className="flex items-center justify-between">
         {steps.map((step, index) => (
           <div key={step.id} className="flex flex-col items-center flex-1">
             <div className="flex items-center w-full">
@@ -62,7 +64,8 @@ export function GenerationStepper({ currentStep, className }: GenerationStepperP
             </div>
           </div>
         ))}
-      </div>
-    </div>
+        </div>
+      </CardContent>
+    </Card>
   );
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -56,33 +58,33 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 252 100% 6%;
+    --foreground: 220 100% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 252 80% 10%;
+    --card-foreground: 190 100% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 252 80% 10%;
+    --popover-foreground: 190 100% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 220 100% 65%;
+    --primary-foreground: 252 100% 6%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 270 50% 15%;
+    --secondary-foreground: 220 100% 85%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 260 30% 18%;
+    --muted-foreground: 220 70% 70%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 300 100% 50%;
+    --accent-foreground: 252 100% 6%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 260 40% 25%;
+    --input: 260 40% 25%;
+    --ring: 220 100% 65%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -101,5 +103,203 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    position: relative;
+    overflow-x: hidden;
   }
+
+  /* Northern Lights Aurora Background */
+  body::before {
+    content: '';
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: radial-gradient(circle at 30% 30%, #3a0ca3, #0f0c29 80%) !important;
+    z-index: -10 !important;
+    pointer-events: none !important;
+  }
+
+  body::after {
+    content: '';
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: 
+      radial-gradient(circle at 70% 40%, rgba(70, 130, 255, 0.6), transparent 70%),
+      radial-gradient(circle at 40% 60%, rgba(255, 0, 204, 0.4), transparent 60%),
+      radial-gradient(circle at 60% 70%, rgba(100, 150, 255, 0.5), transparent 70%),
+      radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.3), transparent 80%) !important;
+    filter: blur(60px) !important;
+    animation: moveAurora 12s ease-in-out infinite alternate !important;
+    z-index: -5 !important;
+    pointer-events: none !important;
+  }
+
+  @keyframes moveAurora {
+    0% {
+      transform: translate(-5%, -5%) scale(1);
+    }
+    50% {
+      transform: translate(5%, 5%) scale(1.1);
+    }
+    100% {
+      transform: translate(-5%, 10%) scale(1.05);
+    }
+  }
+
+  /* Glowing card effects */
+  .glow-card {
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 0 20px rgba(120, 119, 198, 0.3),
+      0 0 40px rgba(120, 119, 198, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .glow-card:hover {
+    box-shadow: 
+      0 0 30px rgba(120, 119, 198, 0.5),
+      0 0 60px rgba(120, 119, 198, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .glow-card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, 
+      rgba(120, 119, 198, 0.5), 
+      rgba(255, 119, 198, 0.5), 
+      rgba(119, 198, 255, 0.5),
+      rgba(120, 119, 198, 0.5)
+    );
+    background-size: 400% 400%;
+    border-radius: inherit;
+    z-index: -1;
+    animation: gradientShift 8s ease infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .glow-card:hover::before {
+    opacity: 0.3;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Fire-themed animated button with floating orbs */
+  .glow-button {
+    position: relative;
+    background: white;
+    height: 4rem;
+    width: 16rem;
+    border: 1px solid #333;
+    text-align: left;
+    padding: 0.75rem;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transform-origin: left;
+    transition: all 500ms;
+  }
+
+  .glow-button:hover {
+    border-color: #fff;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    color: #fff;
+    transition-duration: 500ms;
+  }
+
+  /* Aurora blue orb */
+  .glow-button::before {
+    content: '';
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    right: 0.25rem;
+    top: 0.25rem;
+    z-index: 10;
+    background: rgba(70, 130, 255, 0.6);
+    border-radius: 50%;
+    filter: blur(12px);
+    transition: all 500ms;
+  }
+
+  /* Aurora magenta orb */
+  .glow-button::after {
+    content: '';
+    position: absolute;
+    z-index: 10;
+    width: 5rem;
+    height: 5rem;
+    background: rgba(255, 0, 204, 0.5);
+    right: 2rem;
+    top: 0.75rem;
+    border-radius: 50%;
+    filter: blur(12px);
+    transition: all 500ms;
+  }
+
+  .glow-button:hover::before {
+    right: 3rem;
+    bottom: -2rem;
+    filter: blur(8px);
+    background: rgba(70, 130, 255, 0.8);
+    box-shadow: 20px 20px 20px 30px rgba(70, 130, 255, 0.3);
+    transition-duration: 500ms;
+  }
+
+  .glow-button:hover::after {
+    right: -2rem;
+    background: rgba(255, 0, 204, 0.7);
+    transition-duration: 500ms;
+  }
+
+  /* Custom font styles */
+  .comfortaa-font {
+    font-family: 'Comfortaa', 'Arial', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .subtitle-white-bold {
+    color: white !important;
+    font-weight: bold !important;
+  }
+
+  /* Custom history button hover */
+  .history-button:hover {
+    background-color: white !important;
+    color: black !important;
+    border-color: white !important;
+  }
+
 }

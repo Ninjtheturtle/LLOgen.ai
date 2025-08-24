@@ -43,7 +43,7 @@ export function GeneratorForm({ onGenerate, isGenerating }: GeneratorFormProps) 
   return (
     <Card className="w-full max-w-2xl">
       <CardHeader>
-        <CardTitle>Generate llms.txt</CardTitle>
+        <CardTitle>Generate robots.txt</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -56,6 +56,7 @@ export function GeneratorForm({ onGenerate, isGenerating }: GeneratorFormProps) 
               value={formData.siteUrl}
               onChange={(e) => setFormData(prev => ({ ...prev, siteUrl: e.target.value }))}
               required
+              className="placeholder:text-white/70 text-white/70"
             />
           </div>
 
@@ -67,6 +68,7 @@ export function GeneratorForm({ onGenerate, isGenerating }: GeneratorFormProps) 
               value={formData.extras}
               onChange={(e) => setFormData(prev => ({ ...prev, extras: e.target.value }))}
               rows={4}
+              className="placeholder:text-white/70 text-white/70"
             />
           </div>
 
@@ -135,9 +137,9 @@ export function GeneratorForm({ onGenerate, isGenerating }: GeneratorFormProps) 
             </AccordionItem>
           </Accordion>
 
-          <Button type="submit" className="w-full" disabled={isGenerating || !formData.siteUrl.trim()}>
-            {isGenerating ? "Generating..." : "Generate llms.txt"}
-          </Button>
+          <button type="submit" className="group group-hover:before:duration-500 group-hover:after:duration-500 after:duration-500 hover:border-blue-300 hover:before:[box-shadow:_20px_20px_20px_30px_#1e40af] duration-500 before:duration-500 hover:duration-500 underline underline-offset-2 hover:after:-right-8 hover:before:right-12 hover:before:-bottom-8 hover:before:blur hover:underline hover:underline-offset-4 origin-center hover:decoration-2 hover:text-blue-300 relative bg-neutral-800 h-16 w-full border text-center p-3 text-gray-50 text-base font-bold rounded-lg overflow-hidden before:absolute before:w-12 before:h-12 before:content[''] before:right-1 before:top-1 before:z-10 before:bg-violet-500 before:rounded-full before:blur-lg after:absolute after:z-10 after:w-20 after:h-20 after:content[''] after:bg-sky-300 after:right-8 after:top-3 after:rounded-full after:blur-lg" disabled={isGenerating || !formData.siteUrl.trim()}>
+            {isGenerating ? "Generating..." : "Generate robots.txt"}
+          </button>
         </form>
       </CardContent>
     </Card>

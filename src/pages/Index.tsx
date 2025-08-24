@@ -119,7 +119,7 @@ const Index = () => {
                 .from("artifacts")
                 .insert({
                   run_id: runData.id,
-                  kind: "llms_txt",
+                  kind: "robots_txt",
                   content: result.content,
                 });
 
@@ -163,24 +163,13 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen">
+      <div className="container mx-auto px-4 py-16">
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-16 pt-12">
           <div className="flex items-center justify-center gap-4 mb-4">
-            <h1 className="text-4xl font-bold">LLOgen</h1>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={() => navigate("/history")}
-            >
-              <History className="w-4 h-4 mr-2" />
-              History
-            </Button>
+            <h1 className="text-4xl font-bold comfortaa-font">L L O - G E N</h1>
           </div>
-          <p className="text-xl text-muted-foreground">
-            Generate LLM-friendly llms.txt files for your website
-          </p>
         </div>
 
         <div className="flex flex-col items-center space-y-8">
@@ -194,8 +183,8 @@ const Index = () => {
             <div className="w-full max-w-4xl">
               <GenerationStepper currentStep={currentStep} />
               <div className="text-center mt-4">
-                <p className="text-muted-foreground">
-                  Generating llms.txt for {currentSiteUrl}...
+                <p className="text-white">
+                  Generating robots.txt for {currentSiteUrl}...
                 </p>
               </div>
             </div>
@@ -211,6 +200,17 @@ const Index = () => {
           )}
         </div>
       </div>
+      
+      {/* Fixed history button in bottom right */}
+      <Button 
+        variant="outline" 
+        size="default" 
+        onClick={() => navigate("/history")}
+        className="fixed bottom-6 right-6 z-50 history-button"
+      >
+        <History className="w-4 h-4 mr-2" />
+        History
+      </Button>
     </div>
   );
 };

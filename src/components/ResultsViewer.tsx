@@ -19,7 +19,7 @@ export function ResultsViewer({ content, siteUrl, onRegenerate }: ResultsViewerP
       await navigator.clipboard.writeText(content);
       toast({
         title: "Copied to clipboard",
-        description: "The llms.txt content has been copied to your clipboard.",
+        description: "The robots.txt content has been copied to your clipboard.",
       });
     } catch (error) {
       toast({
@@ -35,7 +35,7 @@ export function ResultsViewer({ content, siteUrl, onRegenerate }: ResultsViewerP
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "llms.txt";
+    a.download = "robots.txt";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -43,7 +43,7 @@ export function ResultsViewer({ content, siteUrl, onRegenerate }: ResultsViewerP
     
     toast({
       title: "Download started",
-      description: "Your llms.txt file is being downloaded.",
+      description: "Your robots.txt file is being downloaded.",
     });
   };
 
@@ -52,19 +52,19 @@ export function ResultsViewer({ content, siteUrl, onRegenerate }: ResultsViewerP
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
-            <CardTitle>Generated llms.txt</CardTitle>
+            <CardTitle>Generated robots.txt</CardTitle>
             <p className="text-sm text-muted-foreground mt-1">For {siteUrl}</p>
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" size="sm" onClick={onRegenerate}>
+            <Button variant="outline" size="sm" onClick={onRegenerate} className="hover:bg-white hover:text-black hover:border-white">
               <RotateCcw className="w-4 h-4 mr-2" />
               Regenerate
             </Button>
-            <Button variant="outline" size="sm" onClick={handleCopy}>
+            <Button variant="outline" size="sm" onClick={handleCopy} className="hover:bg-white hover:text-black hover:border-white">
               <Copy className="w-4 h-4 mr-2" />
               Copy
             </Button>
-            <Button size="sm" onClick={handleDownload}>
+            <Button size="sm" className="glow-button" onClick={handleDownload}>
               <Download className="w-4 h-4 mr-2" />
               Download
             </Button>
